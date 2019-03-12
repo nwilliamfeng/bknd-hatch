@@ -17,7 +17,7 @@ namespace BkndHatch
 
         public override string ToString()
         {
-            return $"QuestionId: {QuestionId},Content:{Content},CreateTime:{CreateTime}";
+            return $"ObjectId:{Id},QuestionId: {QuestionId},Content:{Content},CreateTime:{CreateTime}";
         }
     }
 }

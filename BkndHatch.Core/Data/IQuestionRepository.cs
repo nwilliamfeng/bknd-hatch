@@ -8,9 +8,11 @@ namespace BkndHatch.Data
 {
     public interface IQuestionRepository
     {
-        Question LoadById(int id);
+        Question LoadById(int questionId);
 
         IEnumerable<Question> Load(DateTime startTime,DateTime endTime);
+
+        void Add(Question question);
 
     }
 }

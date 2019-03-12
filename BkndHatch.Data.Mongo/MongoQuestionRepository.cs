@@ -1,36 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
+ 
 
 namespace BkndHatch.Data.Mongo
 {
-    public class MongoQuestionRepository:IQuestionRepository
+    public class MongoQuestionRepository:MongoRepositoryBase<Question>, IQuestionRepository
     {
-        const string CONN_STR = "mongodb://localhost:27017";
-        const string DATABASE_NAME = "Faq";
-        const string TABLE_NAME = "questions";
-        private static IMongoDatabase database;
-
-        public MongoQuestionRepository()
-        {
-            if (database == null)
-                database = new MongoClient(CONN_STR).GetDatabase(DATABASE_NAME);
-        }
-
+      
+         
         public IEnumerable<Question> Load(DateTime startTime, DateTime endTime)
         {
-            return null;
+            return this.Collection().Find(x=>x.CreateTime>=startTime && x.CreateTime<=endTime).ToList();
         }
 
-        public Question LoadById(int id)
+        public Question LoadById(int questionId)
         {
-            return database.GetCollection<Question>(TABLE_NAME).Find(x => x.QuestionId == id).FirstOrDefault();
+            return this.Collection().Find(x => x.QuestionId == questionId).FirstOrDefault();
         }
 
-       
+        public void Add(Question question)
+        {
+            this.Collection().InsertOne(question);
+        }
+
+        protected override string TableName => "questions";
+
     }
 }

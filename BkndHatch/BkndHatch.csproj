@@ -110,6 +110,10 @@
       <Project>{d00e2edd-b7e4-4117-91a8-6a621e8f2e43}</Project>
       <Name>BkndHatch.Data.Mongo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BkndHatch.Tests\BkndHatch.Tests.csproj">
+      <Project>{e3d33062-398a-4208-a78d-3aaed546c40f}</Project>
+      <Name>BkndHatch.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

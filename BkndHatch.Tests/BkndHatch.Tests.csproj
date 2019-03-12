@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D00E2EDD-B7E4-4117-91A8-6A621E8F2E43}</ProjectGuid>
+    <ProjectGuid>{E3D33062-398A-4208-A78D-3AAED546C40F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BkndHatch.Data.Mongo</RootNamespace>
-    <AssemblyName>BkndHatch.Data.Mongo</AssemblyName>
+    <RootNamespace>BkndHatch.Tests</RootNamespace>
+    <AssemblyName>BkndHatch.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,28 +30,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\packages\MongoDB.Bson.2.7.3\lib\net45\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\packages\MongoDB.Driver.2.7.3\lib\net45\MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Core">
-      <HintPath>..\packages\MongoDB.Driver.Core.2.7.3\lib\net45\MongoDB.Driver.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MongoQuestionRepository.cs" />
-    <Compile Include="MongoRepositoryBase.cs" />
+    <Compile Include="QuestionRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BkndHatch.Core\BkndHatch.Core.csproj">
       <Project>{0d417232-52ae-4432-bd15-51effc94474d}</Project>
       <Name>BkndHatch.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BkndHatch.Data.Mongo\BkndHatch.Data.Mongo.csproj">
+      <Project>{d00e2edd-b7e4-4117-91a8-6a621e8f2e43}</Project>
+      <Name>BkndHatch.Data.Mongo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
