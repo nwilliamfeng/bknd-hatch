@@ -3,36 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
 using System.Text.RegularExpressions;
 
 namespace BkndHatch.Tests
 {
-
-    public class CSVItem
-    {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-    }
+ 
     public class RegexTest
     {
         public void MatchAny()
         {
-            var sample = new StringBuilder();
-            sample.AppendLine("sh.xls");
-            sample.AppendLine("ah.xls");
-            sample.AppendLine("cxh3.xls");
-            sample.AppendLine("ch2.xml");
-            sample.AppendLine("dh23.xls");
-            sample.AppendLine("rdh23.doc");
-            sample.AppendLine("rhn.xls");
-            sample.AppendLine("wx3.doc");
-            new Regex(@".h.\.xls").Matches(sample.ToString()).OfType<Match>().ToList().ForEach(match=>
-            {
-                Console.WriteLine(match);
-            });
+            var sample = "any.txt".ReadFile();
+            Console.WriteLine("原数据 :");
+            Console.WriteLine(sample);
+            Console.WriteLine();
+            Console.WriteLine("1. 匹配含有h的xls文件");
+            new Regex(@".+h.*\.xls").Dump(sample);
+            Console.WriteLine();
+            Console.WriteLine("2. 匹配文件名倒数第2个含有h的xls文件");
+            new Regex(@".+h.\.xls").Dump(sample);
+            Console.WriteLine();
             
         }
 
@@ -124,7 +114,31 @@ namespace BkndHatch.Tests
         public void MatchEmail()
         {
             var str = "send a email to abc@forta.com from address: .nwills@yahoo.cn,after sent please sent copy to me ,my email address is : benson@189.com.cn.,dfsceew";
-              new Regex(@"\w+@[\w+\.]+\.\w+").Dump(str);
+              new Regex(@"\w+@[\w+.]+\.\w+").Dump(str);
+        }
+
+
+        public void MatchHttp()
+        {
+            var text =File.ReadAllText(@"Resource\Text\http.txt");
+            Console.WriteLine("原数据:");
+            Console.WriteLine(text);
+            Console.WriteLine();
+            Console.WriteLine("1. 匹配所有http的内容");
+            new Regex(@"http://[\w./]+").Dump(text);
+            Console.WriteLine();
+            Console.WriteLine("2. 匹配所有http和https的内容");
+            new Regex(@"https?://[\w./]+").Dump(text);
+            Console.WriteLine();
+        }
+
+        public void MatchLazy()
+        {
+            var text = File.ReadAllText(@"Resource\Text\lazy.txt");
+            Console.WriteLine("原数据:");
+            Console.WriteLine(text);
+            Console.WriteLine();
+            new Regex(@"<\w+//>").Dump(text);
         }
 
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
@@ -16,6 +17,11 @@ namespace BkndHatch.Tests
             {
                 Console.WriteLine(match);
             });
+        }
+
+        public static string ReadFile(this string fileName)
+        {
+           return System.IO.File.ReadAllText($"Resource\\Text\\{fileName}");
         }
     }
 }
