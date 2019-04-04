@@ -14,7 +14,7 @@ namespace BkndHatch
     {
         static void Main(string[] args)
         {
-            new RegexTest().MatchLazy();
+            new RegexTest().MatchIp();
            // var database = new MongoClient("mongodb://zhangting:zhangting@10.205.248.113:22001,10.205.109.154:22001/QATrain?replicaSet=shard0;minPoolSize=10;maxPoolSize=100") ;
            // database.ListDatabaseNames().ToList().ForEach(x=>Console.WriteLine("DataBaseName:"+x));
            

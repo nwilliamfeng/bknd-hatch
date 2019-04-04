@@ -137,10 +137,37 @@ namespace BkndHatch.Tests
             var text = File.ReadAllText(@"Resource\Text\lazy.txt");
             Console.WriteLine("原数据:");
             Console.WriteLine(text);
-            Console.WriteLine();
-            new Regex(@"<\w+//>").Dump(text);
+            Console.WriteLine("匹配后：");
+            new Regex(@"<B>\w.*?</B>").Dump(text);
         }
 
+        public void MatchBoundary()
+        {
+            var text = "boundary.txt".ReadFile();
+            Console.WriteLine("原数据:");
+            Console.WriteLine(text);
+            Console.WriteLine("匹配后：");
+            new Regex(@"\bcat\b").Dump(text);
+        }
 
+        public void MatchStringBoundary()
+        {
+            var text = "string_boundary.txt".ReadFile();
+            Console.WriteLine("原数据:");
+            Console.WriteLine(text);
+            Console.WriteLine("匹配后：");
+            new Regex(@"<.*>").Dump(text);
+        }
+
+        public void MatchIp()
+        {
+            var text = "ip.txt".ReadFile();
+            Console.WriteLine("原数据:");
+            Console.WriteLine(text);
+            Console.WriteLine("匹配后：");
+            var main = @"(((\d{1,2})|(1\d{2})|(2[0-4]\d))\.){3}";
+            var last = @"((\d{1,2})|(1\d{2})|(2[0-4]\d))";
+            new Regex(main+last).Dump(text);
+        }
     }
 }
