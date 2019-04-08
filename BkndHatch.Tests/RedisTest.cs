@@ -85,8 +85,13 @@ namespace BkndHatch.Tests
 
         public void List_UserIdQueue_Test()
         {
+            var key = "List_Key_Push";
             Console.WriteLine("input keys span with spacewhite key:");
             var strs = Console.ReadLine();
+            var ids= strs.Split(' ').Select(x=>(RedisValue)x).ToArray() ;
+            this.Database.ListLeftPush(key, ids);
+            this.Database.ListTrim(key,0,5);
+            
         }
         
     }
