@@ -20,5 +20,9 @@ namespace BkndHatch.Data.Redis
                 .ToArray();
             database.HashSet(id, hes);      
         }
+  
+
+       
+
     }
 }
