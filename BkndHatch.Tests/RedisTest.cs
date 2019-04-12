@@ -185,6 +185,30 @@ namespace BkndHatch.Tests
                 Console.WriteLine("input new key :");
                 var key = Console.ReadLine();
                 this.Database.SortedSetAdd(redisKey, key, this.GetUnixTimestamp(DateTime.Now));
+              
+                dumpByRank();
+                dumpByScore();
+            }
+
+       
+        }
+
+        public void SortedSet_Mutli_Sort()
+        {
+            var redisTimeKey = "SortedSet_Sort_Time";
+            var redisCoinKey = "SortedSet_Sort_Coin";
+            
+            this.Database.KeyDelete(redisTimeKey);
+            this.Database.KeyDelete(redisCoinKey);
+            this.Database.SortedSetRangeByRank(redisTimeKey,0,or);
+            Action dumpByRank = () => Console.WriteLine("execute range zset by rank: " + string.Join(",", this.Database.SortedSetRangeByRank(redisTimeKey).Select(x => x.ToString())));
+            Action dumpByScore = () => Console.WriteLine("execute range zset by score:" + string.Join(",", this.Database.SortedSetRangeByScore(redisTimeKey).Select(x => x.ToString())));
+            while (true)
+            {
+                Console.WriteLine("input new key :");
+                var key = Console.ReadLine();
+                this.Database.SortedSetAdd(redisTimeKey, key, this.GetUnixTimestamp(DateTime.Now));
+                
                 dumpByRank();
                 dumpByScore();
             }
