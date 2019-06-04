@@ -25,7 +25,7 @@ namespace BkndHatch
             // var test = new QuestionRepositoryTest(repository);
             //  test.Execute();
            
-            RedisTest.Instance.SortedSet_Sort();
+            RedisTest.Instance.SortedSet_Increment();
 
             Console.ReadLine();
         }

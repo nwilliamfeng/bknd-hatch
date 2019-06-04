@@ -193,6 +193,24 @@ namespace BkndHatch.Tests
        
         }
 
+        public void SortedSet_Increment()
+        {
+            var redisKey = "SortedSet_Increment";
+            var time = DateTime.Now;
+            // this.Database.KeyDelete(redisKey);
+            //var tran = this.Database.CreateTransaction();
+            //var getResult = tran.StringGetAsync(key);
+            //tran.KeyDeleteAsync(key);
+           // tran.Execute();
+
+            for (int i = 0; i < 3; i++)
+            {
+                this.Database.SortedSetIncrement(redisKey, "key", (i+1) * 100 );
+            }
+
+
+        }
+
         public void SortedSet_Mutli_Sort()
         {
             var redisTimeKey = "SortedSet_Sort_Time";
@@ -200,7 +218,7 @@ namespace BkndHatch.Tests
             
             this.Database.KeyDelete(redisTimeKey);
             this.Database.KeyDelete(redisCoinKey);
-            this.Database.SortedSetRangeByRank(redisTimeKey,0,or);
+        //   this.Database.SortedSetRangeByRank(redisTimeKey,0,or);
             Action dumpByRank = () => Console.WriteLine("execute range zset by rank: " + string.Join(",", this.Database.SortedSetRangeByRank(redisTimeKey).Select(x => x.ToString())));
             Action dumpByScore = () => Console.WriteLine("execute range zset by score:" + string.Join(",", this.Database.SortedSetRangeByScore(redisTimeKey).Select(x => x.ToString())));
             while (true)
