@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BkndHatch.Tests", "BkndHatc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BkndHatch.Data.Redis", "BkndHatch.Data.Redis\BkndHatch.Data.Redis.csproj", "{7F02CD5E-16AB-4D1E-B78A-A5139FFB7763}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BkndHatch.Dapper", "BkndHatch.Dapper\BkndHatch.Dapper.csproj", "{5DFE7675-90E2-4AD1-B6ED-6984649A9400}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7F02CD5E-16AB-4D1E-B78A-A5139FFB7763}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F02CD5E-16AB-4D1E-B78A-A5139FFB7763}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F02CD5E-16AB-4D1E-B78A-A5139FFB7763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DFE7675-90E2-4AD1-B6ED-6984649A9400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DFE7675-90E2-4AD1-B6ED-6984649A9400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DFE7675-90E2-4AD1-B6ED-6984649A9400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DFE7675-90E2-4AD1-B6ED-6984649A9400}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

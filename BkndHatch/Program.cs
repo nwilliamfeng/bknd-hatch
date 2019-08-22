@@ -24,8 +24,10 @@ namespace BkndHatch
             //items.ToList().ForEach(x => Console.WriteLine(x));
             // var test = new QuestionRepositoryTest(repository);
             //  test.Execute();
-           
-            RedisTest.Instance.SortedSet_Increment();
+
+            ProductRepository.Instance.ClearTable();
+            
+
 
             Console.ReadLine();
         }
