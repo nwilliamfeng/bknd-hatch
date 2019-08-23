@@ -48,14 +48,48 @@ namespace BkndHatch.Data
         }
 
 
+        public IEnumerable<Product> Find(string productName, int pageIdx,int pageSize,ref int totalCount)
+        {
+            using (var conn = CreateConnection())
+            {
+                var sql1 = $"select * from {PRODUCT_TABLE} where name like @a limit {pageSize} offset {pageSize * (pageIdx > 0 ? pageIdx - 1 : 0)}";
+                var sql2 = $"select count(*) from {PRODUCT_TABLE} where name like @a ";
+                var sql = string.Join(";", sql1, sql2);
 
+                var reader = conn.QueryMultiple(sql, new { a = productName + "%" });
+                var result =reader.Read<Product>();
+                  totalCount = reader.Read<int>().FirstOrDefault();
+                reader.Dispose();
+
+                return result;
+          
+            };
+        }
+
+         public IEnumerable<Product> Find(DateTime start ,DateTime end, int pageIdx,int pageSize,ref int totalCount)
+        {
+            using (var conn = CreateConnection())
+            {
+                var sql1 = $"select * from {PRODUCT_TABLE} where createdate >= @a and createdate<=@b limit {pageSize} offset {pageSize * (pageIdx > 0 ? pageIdx - 1 : 0)}";
+                var sql2 = $"select count(*) from {PRODUCT_TABLE} where createdate >= @a and createdate<=@b";
+                var sql = string.Join(";", sql1, sql2);
+
+                var reader = conn.QueryMultiple(sql, new { a = start.ToString("yyyy-MM-dd HH:mm:ss") , b = end.ToString("yyyy-MM-dd HH:mm:ss") });
+                var result =reader.Read<Product>();
+                  totalCount = reader.Read<int>().FirstOrDefault();
+                reader.Dispose();
+
+                return result;
+          
+            };
+        }
 
 
         public IEnumerable<Product> Find(string productName)
         {
             using (var conn = CreateConnection())
             {
-                conn.Query<Product>($"select top 1 from {PRODUCT_TABLE} where name like ")
+               return  conn.Query<Product>($"select * from {PRODUCT_TABLE} where name like @a limit 5",new { a=productName+"%"}) ;
 
             };
         }

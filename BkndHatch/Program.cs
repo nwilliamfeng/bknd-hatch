@@ -25,8 +25,7 @@ namespace BkndHatch
             // var test = new QuestionRepositoryTest(repository);
             //  test.Execute();
 
-            ProductRepository.Instance.ClearTable();
-            
+            ProductRepositoryTest.QueryProductByDate();
 
 
             Console.ReadLine();
